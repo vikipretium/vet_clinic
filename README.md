@@ -1,31 +1,22 @@
-# curriculum-databases-projects-template
+# VET-CLINIC Database
 
-> This template should be used for database related projects at Microverse.
-> Generate your own repository, update this README and edit all files content while working on projects. You should not be adding any new files unless asked otherwise.
-
+> A database for a vet clinic animals, created using PostgreSQL.
 
 ## Getting Started
 
 This repository includes files with plain SQL that can be used to recreate a database:
 
-- Use [schema.sql](./schema.sql) to create all tables.
-- Use [data.sql](./data.sql) to populate tables with sample data.
-- Check [queries.sql](./queries.sql) for examples of queries that can be run on a newly created database. **Important note: this file might include queries that make changes in the database (e.g., remove records). Use them responsibly!**
+- [schema.sql](./schema.sql) to create all tables.
+- [data.sql](./data.sql) to populate tables with sample data.
+- [queries.sql](./queries.sql) for examples of queries that can be run on a newly created database.
 
+## Author
 
-## Authors
+👤 **Vignesh**
 
-👤 **Author1**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@vikipretium](https://github.com/vikipretium)
+- Twitter: [@vikipretium](https://twitter.com/vikipretium)
+- LinkedIn: [vikipretium](https://linkedin.com/in/vikipretium)
 
 ## 🤝 Contributing
 
