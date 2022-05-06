@@ -12,7 +12,6 @@ CREATE TABLE animals(id INT GENERATED ALWAYS AS IDENTITY,
 ALTER TABLE animals
 ADD COLUMN species varchar(20);
 
-
 CREATE TABLE owners (
  id INT GENERATED ALWAYS AS IDENTITY,
  full_name varchar(100) NOT NULL,
@@ -58,14 +57,12 @@ SET species = 'pokemon'
 WHERE species IS NULL;
 SELECT * FROM animal;
 
-
 COMMIT;
 
 BEGIN;
 
 DELETE FROM animals;
 SELECT * FROM animal;
-
 
 ROLLBACK;
 
