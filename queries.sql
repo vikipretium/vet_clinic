@@ -43,56 +43,7 @@ SELECT species,MIN(weight_kg),MAX(weight_kg) FROM animals GROUP BY species;
 SELECT species, AVG(escape_attempts) FROM animals WHERE date_of_birth >= '1990-1-1' 
 AND date_of_birth <= '2000-12-31' GROUP BY species; 
 
-BEGIN;
-UPDATE animals
-SET species = 'unspecified';
-SELECT * FROM animal;
-ROLLBACK;
 
-BEGIN;
-
-UPDATE animals
-SET species = 'digimon'
-WHERE name LIKE '%mon%';
-SELECT * FROM animal;
-
-
-UPDATE animals
-SET species = 'pokemon'
-WHERE species IS NULL;
-SELECT * FROM animal;
-
-
-COMMIT;
-
-BEGIN;
-
-DELETE FROM animals;
-SELECT * FROM animal;
-
-
-ROLLBACK;
-
-BEGIN;
-
-DELETE FROM animals
-WHERE date_of_birth >= '2022-1-1';
-SELECT * FROM animal;
-
-SAVEPOINT backup;
-
-UPDATE animals
-SET weight_kg = weight_kg * -1;
-SELECT * FROM animal;
-
-ROLLBACK TO backup;
-
-UPDATE animals
-SET weight_kg = weight_kg * -1;
-WHERE weight_kg < 0 ;
-SELECT * FROM animal;
-
-COMMIT;
 
 
 

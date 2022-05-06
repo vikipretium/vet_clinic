@@ -39,6 +39,57 @@ ADD COLUMN owner_id INT,
 ADD FOREIGN KEY (owner_id) REFERENCES owners (id)
 ON DELETE CASCADE;
 
+BEGIN;
+UPDATE animals
+SET species = 'unspecified';
+SELECT * FROM animal;
+ROLLBACK;
+
+BEGIN;
+
+UPDATE animals
+SET species = 'digimon'
+WHERE name LIKE '%mon%';
+SELECT * FROM animal;
+
+
+UPDATE animals
+SET species = 'pokemon'
+WHERE species IS NULL;
+SELECT * FROM animal;
+
+
+COMMIT;
+
+BEGIN;
+
+DELETE FROM animals;
+SELECT * FROM animal;
+
+
+ROLLBACK;
+
+BEGIN;
+
+DELETE FROM animals
+WHERE date_of_birth >= '2022-1-1';
+SELECT * FROM animal;
+
+SAVEPOINT backup;
+
+UPDATE animals
+SET weight_kg = weight_kg * -1;
+SELECT * FROM animal;
+
+ROLLBACK TO backup;
+
+UPDATE animals
+SET weight_kg = weight_kg * -1;
+WHERE weight_kg < 0 ;
+SELECT * FROM animal;
+
+COMMIT;
+
 UPDATE animals
 SET owner_id = 1
 WHERE name ='Agumon';
