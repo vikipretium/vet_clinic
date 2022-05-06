@@ -33,44 +33,5 @@ VALUES ('Blossom','1998-10-13',3,true,17);
 INSERT INTO animals(name,date_of_birth,escape_attempts,neutered,weight_kg)
 VALUES ('Ditto','2022-5-14',4,true,22);
 
-BEGIN;
-UPDATE animals
-SET species = 'unspecified';
-ROLLBACK;
 
-BEGIN;
-
-UPDATE animals
-SET species = 'digimon'
-WHERE name LIKE '%mon%';
-
-UPDATE animals
-SET species = 'pokemon'
-WHERE species IS NULL;
-
-COMMIT;
-
-BEGIN;
-
-DELETE FROM animals;
-
-ROLLBACK;
-
-BEGIN;
-
-DELETE FROM animals
-WHERE date_of_birth >= '2022-1-1';
-
-SAVEPOINT backup;
-
-UPDATE animals
-SET weight_kg = weight_kg * -1;
-
-ROLLBACK TO backup;
-
-UPDATE animals
-SET weight_kg = weight_kg * -1;
-WHERE weight_kg < 0 ;
-
-COMMIT;
 
