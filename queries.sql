@@ -95,33 +95,7 @@ SELECT * FROM animal;
 COMMIT;
 
 
-UPDATE animals
-SET owner_id = 1
-WHERE name ='Agumon';
 
-UPDATE animals
-SET owner_id = 2
-WHERE name IN ('Gabumon','Pikachu');
-
-UPDATE animals
-SET owner_id = 3
-WHERE name IN ('Devimon','Plantmon');
-
-UPDATE animals
-SET owner_id = 4
-WHERE name IN ('Charmander','Squirtle','Blossom');
-
-UPDATE animals
-SET owner_id = 5
-WHERE name IN ('Angemon','Boarmon');
-
-UPDATE animals
-SET species_id = 2
-WHERE name LIKE '%mon';
-
-UPDATE animals
-SET species_id = 1
-WHERE species_id IS NULL;
 
 -- What animals belong to Melody Pond?
 SELECT name FROM owners JOIN animals ON owners.id= animals.owner_id WHERE full_name='Melody Pond';
