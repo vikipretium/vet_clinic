@@ -8,3 +8,6 @@ CREATE TABLE animals(id INT GENERATED ALWAYS AS IDENTITY,
  weight_kg DECIMAL NOT NULL,
  PRIMARY KEY (id)
  );
+
+ALTER TABLE animals
+ADD COLUMN species varchar(20);
