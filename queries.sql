@@ -43,53 +43,27 @@ SELECT species,MIN(weight_kg),MAX(weight_kg) FROM animals GROUP BY species;
 SELECT species, AVG(escape_attempts) FROM animals WHERE date_of_birth >= '1990-1-1' 
 AND date_of_birth <= '2000-12-31' GROUP BY species; 
 
-BEGIN;
-UPDATE animals
-SET species = 'unspecified';
-SELECT * FROM animal;
-ROLLBACK;
+-- What animals belong to Melody Pond?
+SELECT name FROM owners JOIN animals ON owners.id= animals.owner_id WHERE full_name='Melody Pond';
 
-BEGIN;
+-- List of all animals that are pokemon (their type is Pokemon).
+SELECT animals.name FROM species JOIN animals ON  species.id = animals.species_id WHERE species.name = 'Pokemon';
 
-UPDATE animals
-SET species = 'digimon'
-WHERE name LIKE '%mon%';
-SELECT * FROM animal;
+-- List all owners and their animals, remember to include those that don't own any animal.
+SELECT full_name,name FROM owners LEFT JOIN animals ON owners.id= animals.owner_id;
 
+-- How many animals are there per species?
+SELECT species.name, COUNT(animals.name) FROM species 
+JOIN animals ON  species.id = animals.species_id GROUP BY species.name;
 
-UPDATE animals
-SET species = 'pokemon'
-WHERE species IS NULL;
-SELECT * FROM animal;
+-- List all Digimon owned by Jennifer Orwell.
+SELECT animals.name FROM owners JOIN animals ON owners.id= animals.owner_id 
+JOIN species ON species.id = animals.species_id WHERE full_name='Jennifer Orwell' AND species.name = 'Digimon';
 
+-- List all animals owned by Dean Winchester that haven't tried to escape.
+SELECT name FROM owners JOIN animals ON owners.id= animals.owner_id WHERE full_name='Dean Winchester'
+AND animals.escape_attempts = 0;
 
-COMMIT;
-
-BEGIN;
-
-DELETE FROM animals;
-SELECT * FROM animal;
-
-
-ROLLBACK;
-
-BEGIN;
-
-DELETE FROM animals
-WHERE date_of_birth >= '2022-1-1';
-SELECT * FROM animal;
-
-SAVEPOINT backup;
-
-UPDATE animals
-SET weight_kg = weight_kg * -1;
-SELECT * FROM animal;
-
-ROLLBACK TO backup;
-
-UPDATE animals
-SET weight_kg = weight_kg * -1;
-WHERE weight_kg < 0 ;
-SELECT * FROM animal;
-
-COMMIT;
+-- Who owns the most animals?
+SELECT full_name FROM owners 
+JOIN animals ON  owners.id = animals.owner_id GROUP BY full_name ORDER BY COUNT(name) DESC LIMIT 1; 
