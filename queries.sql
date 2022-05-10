@@ -113,3 +113,23 @@ SELECT species.name AS expected_specialty FROM animals JOIN visits ON animals.id
 JOIN vets ON vets.id = visits.vet_id JOIN species ON species.id = animals.species_id 
 WHERE vets.name = 'Maisy Smith' GROUP BY species.name 
 ORDER BY COUNT(DISTINCT animals.name) DESC LIMIT 1; 
+
+SELECT COUNT(*) FROM visits where animal_id = 4;
+SELECT * FROM visits where vet_id = 2;
+SELECT * FROM owners where email = 'owner_18327@mail.com';
+
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits WHERE animal_id = 4;
+EXPLAIN ANALYZE SELECT * FROM visits WHERE vet_id = 2;
+EXPLAIN ANALYZE SELECT * FROM owners WHERE email = 'owner_18327@mail.com';
+
+\d visits;
+
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits WHERE animal_id = 4;
+
+\d visits;
+
+EXPLAIN ANALYZE SELECT * FROM visits where vet_id = 2;
+
+\d owners;
+
+EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com';
