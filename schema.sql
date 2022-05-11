@@ -43,7 +43,7 @@ ON DELETE DEFAULT;
 CREATE TABLE vets (
  id INT GENERATED ALWAYS AS IDENTITY,
  name varchar(100) NOT NULL,
- age SMALLINT NOT NULL,
+ age SMALLINT,
  date_of_graduation DATE NOT NULL,
  PRIMARY KEY (id)
 );
@@ -58,6 +58,7 @@ CREATE TABLE visits (
  animal_id INT REFERENCES animals(id) NOT NULL,
  visit_date DATE NOT NULL    
 ); 
+
 
 -- tables
 
@@ -137,3 +138,14 @@ WHERE name LIKE '%mon';
 UPDATE animals
 SET species_id = 1
 WHERE species_id IS NULL;
+
+
+/*performance project*/
+
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
+CREATE INDEX animal_id_asc ON visits (animal_id ASC);
+
+CREATE INDEX vet_id_asc ON visits (vet_id ASC);
+
+CREATE INDEX email_asc ON owners (email ASC);
