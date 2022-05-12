@@ -1,7 +1,8 @@
 # VET-CLINIC Database
 
 > A database for a vet clinic animals, created using PostgreSQL.
-
+![image](https://user-images.githubusercontent.com/20333314/168100149-5b0805b1-4fbd-4d38-9bd0-2d3735b5d1e0.png)
+> [DrawSQL Link](https://drawsql.app/microverse-51/diagrams/vet-clinic-1/embed)
 ## Getting Started
 
 This repository includes files with plain SQL that can be used to recreate a database:
